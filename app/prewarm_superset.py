@@ -190,7 +190,7 @@ def warm_dashboard(config: dict, page: Page, dash_id: str):
     url = build_dashboard_url(config, dash_id)
     print(f"→ warming dashboard {dash_id} @ {url}")
     page.goto(url, wait_until="domcontentloaded")
-
+    time.sleep(config["buffer_time_to_load_dashboard"])  # sleep for config["buffer_time_to_load_dashboard"] seconds to make sure the dashboard fully loads
     # Initial dashboard refresh to pull latest
     refresh_dashboard(page)
     try:
