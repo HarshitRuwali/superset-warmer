@@ -17,4 +17,8 @@ RUN uv sync
 
 RUN uv run playwright install --with-deps chromium
 
+# Force unbuffered logging
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
 CMD ["uv", "run", "main.py"]
